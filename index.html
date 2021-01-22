@@ -30,6 +30,9 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="hour"></div>
+      <div class="time-block"></div>
+      <div class="row"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -40,10 +43,17 @@
       // display current day using moment.js as a reference
       $("#currentDay").text(moment().format("ddd, hA"));
       // show the time blocks for standard business hours
-        // display hours
-          // if time is past change color
-          // if time is present change color
-          // if time is later change color
+      var businessHours = ["Time", "9am", "10am", "llam", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
+      
+      // display hours
+      for (var i = 0; i < businessHours.length; i++) {
+        var workHours = $(".hour");
+        workHours.text(businessHours[i]);
+        $(".time-block").append(workHours);
+      }
+        // if time is past change color
+        // if time is present change color
+        // if time is later change color
       
       // allow the user to write a reminder
       
