@@ -28,11 +28,21 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
+    <!-- Timeblocks go here -->
     <div class="container">
-      <!-- Timeblocks go here -->
-      <div class="hour"></div>
-      <div class="time-block"></div>
-      <div class="row"></div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="hour"></div>
+        </div>
+        <div class="col-md-8">
+          <div class="time-block">open mid
+            <div class="description"></div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn">Save</button>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,14 +53,30 @@
       // display current day using moment.js as a reference
       $("#currentDay").text(moment().format("ddd, hA"));
       // show the time blocks for standard business hours
-      var businessHours = ["Time", "9am", "10am", "llam", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
+      
+      // created variables to put into list  
+      var businessHours = [
+        "Time",
+        "9 AM",
+        "10 AM",
+        "ll AM",
+        "12 PM",
+        "1 PM",
+        "2 PM",
+        "3 PM",
+        "4 PM",
+        "5 PM"
+      ];
       
       // display hours
+      var timeDiv = $(".hour");
+      
       for (var i = 0; i < businessHours.length; i++) {
-        var workHours = $(".hour");
-        workHours.text(businessHours[i]);
-        $(".time-block").append(workHours);
+        var newTimeDiv = $("<div class=\"hour\">" + businessHours[i] + "</div>");
+
+        timeDiv.append(newTimeDiv);
       }
+      
         // if time is past change color
         // if time is present change color
         // if time is later change color
